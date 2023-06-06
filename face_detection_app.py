@@ -153,6 +153,13 @@ def logs():
 
     return Response(stream_with_context(event_stream()), mimetype="text/event-stream")
 
+
+@app.route('/about')
+def about():
+    """page overview page."""
+    return render_template('overview.html')
+
+
 @app.route('/')
 def index():
     """Video streaming home page."""

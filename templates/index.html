@@ -1,54 +1,30 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
 
-    <head>
-        <title>MaskPatrol</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <meta charset="utf-8" />
-		<link rel="stylesheet" type="text/css" href="css/main.css" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap">
-    </head>
-
-    <body>
-        <nav>
-            <ul>
-                <li><a href="#">
-                        <img src="images/maskpatrol_logo.png" alt="Home">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <object type="image/svg+xml" data="images/On.svg" style="width: 24px; height: 24px; opacity: 25%;">Video</object>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <object type="image/svg+xml" data="images/Mark.svg" style="width: 18px; height: 18px; opacity: 25%;">About</object>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+{% block main %}
         <div class="content"> 
 
             <!-- for the video stream -->
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8  offset-lg-2">
-                        <h3 class="mt-5">Live Stream Video Feed</h3>
-                        <img src="{{ url_for('video_feed') }}", width="50%">
+                    <div class="container-vid vid col-lg-8">
+                        <h3 class="mt-3">Live Stream Video Feed</h3>
+                        <img class="img-vid" src="{{ url_for('video_feed') }}">
+                    </div>
+                    <!-- for the logs -->
+                    <div class="log-column container-vid col-lg-4">
+                        <div class="container-hist">
+                            <h3 class="mt-3">Overview of Today's Logs</h3>
+                            <div class="logs" id="hist"></div> <!--idk pa kung paano nalagay code-->
+                        </div>
+                        <div class="container-log">
+                            <h3 class="mt-3">History Logs</h3>
+                            <div class="logs" id="logs"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <!-- for the logs -->
-            <div class="container">
-                <h3 class="mt-5">Logs</h3>
-                <div id="logs"></div>
-            </div>
         </div>
 
-    </body>
-</html>
 
 <script>
     var source = new EventSource("{{ url_for('logs') }}");
@@ -57,3 +33,4 @@
     }
 </script>
 
+{% endblock %}

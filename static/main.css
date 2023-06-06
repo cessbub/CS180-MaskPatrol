@@ -1,0 +1,145 @@
+/*
+main bg color: F8F8F8
+main text color: black
+primary font: DM Sans
+*/
+html{
+    height: 100%;
+}
+
+body {
+  background-color: #F8F8F8;
+  font-family: 'DM Sans', sans-serif;
+  height: 100%;
+}
+nav {
+    position: fixed;
+    width: 96px;
+    height: 100vh;
+    left: 0px;
+    top: 0px;
+    float: left;
+    background-color:  white;    
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+  
+  }
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  nav li {
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav li a {
+    display: block;
+    padding: 30px;
+    text-decoration: none;
+  }
+
+  nav li a img {
+    width: 58px;
+    height: 50px;
+    margin-top: 4px;
+  }
+
+.content {
+    /*margin-left: 96px; /* Set the same width as the side navigation */
+    /* padding-left: 34px; */
+    margin-top: 35px;
+    height: 90%;
+}
+
+h3 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.container{
+    height: 100%;
+}
+
+.row{
+    height: 100%;
+}
+
+.container-vid, .container-over, .creator{
+    float: left;
+}
+
+.img-vid{
+    width: 90%;
+}
+
+.logs{
+    overflow-y: auto;
+    height: 90%;
+}
+
+.container-log{
+    height: 100%;
+}
+
+.log-column{
+    height: 90%;
+}
+
+.button{
+    pointer-events: none;
+    border-radius: 8px;
+    border: none;
+}
+
+.button-com{
+    background-color: #ffffce;
+}
+
+.button-des{
+    background-color: #caf1ff;
+}
+
+.button-web{
+    background-color: #c1e1c1;
+}
+
+.creator-img{
+    border-radius: 8px;
+    width: 130px;
+    height: 160px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+}
+
+.creators{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.nav-button{
+    opacity: 25%;
+}
+
+.nav-vid{
+    width: 24px;
+    height: 24px;
+}
+
+.nav-about{
+    width: 18px;
+    height: 18px;
+}
+
+.nav-active{
+    opacity: 80%;
+}
