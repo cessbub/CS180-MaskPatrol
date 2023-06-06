@@ -9,7 +9,7 @@ from flask import Flask, render_template, Response, stream_with_context
 import time
 import queue
 
-MIN_DISTANCE = 130  # Minimum distance for social distancing violation
+MIN_DISTANCE = 500  # Minimum distance for social distancing violation
 
 # create a Flask app instance
 app = Flask(__name__)
