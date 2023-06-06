@@ -42,11 +42,18 @@
 
             <!-- for the logs -->
             <div class="container">
-  
+                <h3 class="mt-5">Logs</h3>
+                <div id="logs"></div>
             </div>
         </div>
 
     </body>
-
-
 </html>
+
+<script>
+    var source = new EventSource("{{ url_for('logs') }}");
+    source.onmessage = function(event) {
+        document.getElementById("logs").innerHTML += event.data + "<br>";
+    }
+</script>
+
