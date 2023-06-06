@@ -5,12 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="413de300-fe0e-4cb3-8601-8a77d0347047" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/overview.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/face_detection_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/face_detection_app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Mark.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/On.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/maskpatrol_logo 1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/maskpatrol_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/css/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/images/Mark.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/images/On.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/images/maskpatrol_logo 1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/images/maskpatrol_logo.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
