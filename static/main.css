@@ -86,10 +86,9 @@ nav {
 }  
 
 .content {
-    /*margin-left: 96px; /* Set the same width as the side navigation */
-    margin-left: 96px;     
-    margin-top: 35px;
-    padding-left: 40px;
+    /*margin-left: 96px; /* Set the same width as the side navigation */       
+    margin-top: 18px;
+    padding-left: 136px;
     padding-right: 40px;
     height: 100vh;
     background-color: #F8F8F8;
@@ -118,12 +117,23 @@ nav {
     height: 100%;
 }
 
-.container-vid, .container-over, .creator{
+.container-vid, .container-over{
     float: left;
 }
 
+.creator{
+    flex: 1 1 50%;
+    display: flex;
+    align-items: center;
+    
+}
+
 .img-vid{
-    width: 90%;
+    margin-top: 19px;
+    margin-bottom: 19px;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
 }
 
 .logs{
@@ -141,40 +151,56 @@ nav {
 
 .button{
     pointer-events: none;
-    border-radius: 8px;
+    border-radius: 6px;
     border: none;
+    font-size: 10px;
+    font-family: 'DM Sans';
+    font-weight: 400;
+    padding: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-right: 4px;
 }
 
 .button-com{
-    background-color: #ffffce;
+    background-color: #FFF5CC;
 }
 
 .button-des{
-    background-color: #caf1ff;
+    background-color: #CCF8FE;
 }
 
 .button-web{
-    background-color: #c1e1c1;
+    background-color: #ecced1;
 }
 
 .creator-img{
+    position: relative;
     border-radius: 8px;
-    width: 130px;
-    height: 160px;
+    width: 146px;
+    height: 174px;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     object-fit: cover;
+    flex-shrink: 0;
 }
 
+.creator-text {
+    flex: 1 1 50%;
+    justify-content: flex-end;
+    flex-grow: 1;
+}
 .creators{
     margin-top: 15px;
     margin-bottom: 15px;
+    flex-wrap: wrap;
 }
 
 
 p {    
     font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
 }
 
 .bubble {
@@ -185,7 +211,22 @@ p {
     padding-bottom: 10px;
     border-radius: 20px;
     margin-top: 24px;
+    margin-bottom: 24px;
 }
 .bubble p {
     opacity: 40%;
+}
+
+.bubble-creator {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    margin-top: 24px;
+    margin-bottom: 10px;
+    margin-right: 24px;
+    padding-left: 12px;
 }
