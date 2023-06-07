@@ -1,7 +1,7 @@
-flask 
-opencv-python 
+flask
+opencv-python
 mtcnn
-
 scipy
 tensorflow
 numpy
+PIL
