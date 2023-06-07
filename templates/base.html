@@ -12,17 +12,17 @@
     <body>
         <nav>
             <ul>
-                <li><a href="index.html">
+                <li><a href="{{ url_for('index') }}">
                         <img src="../static/images/maskpatrol_logo.png" alt="Home">
                     </a>
                 </li>
                 <li>
-                    <a href="index.html">
+                    <a href="{{ url_for('index') }}">
                         <img class="nav-button nav-vid {{ 'nav-active' if request.path == url_for('index') }}" src="../static/images/On.svg" alt="Video">
                     </a>
                 </li>
                 <li>
-                    <a href="overview.html">
+                    <a href="{{ url_for('about') }}">
                         <img class="nav-button nav-about {{ 'nav-active' if request.path == url_for('about') }}" src="../static/images/Mark.svg" alt="About">
                     </a>
                 </li>
