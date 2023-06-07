@@ -1,4 +1,6 @@
-flask 
-opencv-python 
+flask
+opencv-python
 mtcnn
-
+tensorflow
+numpy
+PIL
