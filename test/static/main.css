@@ -136,11 +136,40 @@ nav {
     border-radius: 20px;
 }
 
-.logs{
-    overflow-y: auto;
-    height: 90%;
+.tally{
+    margin: 16px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 15px;
+    padding-top: 5px;
+    font-family: 'Inter';
+    font-weight: 600;
+    height: 100%;
+    width: 93%;
+    border-radius: 20px;
+    background-color: #EB5757;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the columns horizontally */
+    align-items: center; /* Center the columns vertically */
 }
 
+.tally > div {
+    flex: 0 0 50%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    text-align: center; 
+    font-size: 15px;
+  }
+
+.logs {
+    max-height: 370px; /* Adjust the height as needed */
+    overflow-y: auto;
+}  
 .container-log{
     height: 100%;
 }

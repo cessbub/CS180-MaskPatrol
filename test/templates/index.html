@@ -8,6 +8,8 @@
 		<link rel="stylesheet" type="text/css" href="../static/main.css" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
+
     </head>
     <body>
         <nav>
@@ -44,8 +46,17 @@
                     <div class="log-column container-vid col-lg-4">
                         <div class="container-hist">
                             <div class="title mt-3">Overview of Today's Logs</div>
-                            <div class="bubble">
-                                <div class="logs" id="hist"></div> <!--idk pa kung paano nalagay code-->
+                            <div class="bubble" style="padding: 2px;">
+                                <div class="tally" id="tally">
+                                    <div>
+                                      <div style="font-size: 42px;" id="tally-mask">2</div>
+                                      <div>Not Wearing Mask Properly</div>
+                                    </div>
+                                    <div>
+                                      <div style="font-size: 42px;" id="tally-distancing">4</div>
+                                      <div>Not Social Distancing</div>
+                                    </div>
+                                  </div><!--idk pa kung paano nalagay code-->
                             </div>
                         </div>
                         <div class="container-log">
