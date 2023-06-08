@@ -15,6 +15,8 @@ MIN_DISTANCE = 500  # Minimum distance for social distancing violation
 app = Flask(__name__)
 
 log_queue = queue.Queue()
+num_mask = 0
+num_dist = 0
 
 # set up the camera as the video source
 camera = cv2.VideoCapture(0)
@@ -121,6 +123,10 @@ def gen_frames():
                 # Display the label of the face
                 cv2.putText(frame, label_text, (startX, startY - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.85,
                             dist_label[labels_dist[i]], 2)
+                
+                if labels_mask[i] in [1, 2, 3, 4]:
+                    log_message = "Someone is not wearing a mask properly."
+                    log_queue.put(log_message)
 
             # show the output frame
             ret, buffer = cv2.imencode('.jpg', frame)
@@ -130,11 +136,11 @@ def gen_frames():
             
             dist_violation = 1 in labels_dist
             if dist_violation:  # if there's a violation, add a log message
-                log_message = "Social Distancing Violation Detected"
+                log_message = "There are people not social distancing."
                 log_queue.put(log_message)
-            else:
-                log_message = "No violation detected"
-                log_queue.put(log_message)
+            #else:
+            #    log_message = "No violation detected"
+            #    log_queue.put(log_message)
 
 
 @app.route('/video_feed')

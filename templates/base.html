@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html>
-
-    <head>
-        <title>MaskPatrol</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <meta charset="utf-8" />
-		<link rel="stylesheet" type="text/css" href="../static/main.css" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap">        
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
-    </head>
-    <body>
-        <nav>
-            <ul>
-                <li><a href="{{ url_for('index') }}">
-                        <img src="../static/images/maskpatrol_logo.png" alt="Home">
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ url_for('index') }}">
-                        <img class="nav-button nav-vid {{ 'nav-active' if request.path == url_for('index') }}" src="../static/images/On.svg" alt="Video">
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ url_for('about') }}">
-                        <img class="nav-button nav-about {{ 'nav-active' if request.path == url_for('about') }}" src="../static/images/Mark.svg" alt="About">
-                    </a>
-                </li>
-            </ul>
-        </nav>
+<head>
+    <title>MaskPatrol</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="../static/main.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/images/favicon-16x16.png">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="{{ url_for('index') }}">
+                    <img src="../static/images/maskpatrol_logo.png" alt="Home">
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('index') }}">
+                    <img class="nav-button nav-vid {{ 'nav-active' if request.path == url_for('index') }}" src="../static/images/On.svg" alt="Video">
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('about') }}">
+                    <img class="nav-button nav-about {{ 'nav-active' if request.path == url_for('about') }}" src="../static/images/Mark.svg" alt="About">
+                </a>
+            </li>
+        </ul>
+    </nav>
     {% block main %}
     {% endblock %}
-    </body>
+</body>
 </html>

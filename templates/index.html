@@ -1,49 +1,77 @@
 {% extends 'base.html' %}
 
 {% block main %}
-        <div class="content">                 
-            <div class="row">
+<div class="content">
+    <div class="row">
+        <!-- for the video stream -->
+        <div class="container-vid vid col-lg-8">
+            <div class="title mt-3">Live Stream Video Feed</div>
+            <div class="bubble">
+                <img class="img-vid" src="{{ url_for('video_feed') }}">
+            </div>
+        </div>
 
-                <!-- for the video stream -->
-                <div class="container-vid vid col-lg-8">
-                    <div class="title mt-3">Live Stream Video Feed</div>
-                    <div class="bubble">
-                        <img class="img-vid" src="{{ url_for('video_feed') }}">
-                    </div>
-                </div>
+        <!-- for the logs -->
+        <div class="log-column container-vid col-lg-4">
+            <div class="container-hist">
 
-                <!-- for the logs -->
-                <div class="log-column container-vid col-lg-4">
-                    <div class="container-hist">
-                        <div class="title mt-3">Overview of Today's Logs</div>
-                        <div class="bubble" style="padding: 2px;">
-                            <div class="tally">
-                                <div>
-                                <div style="font-size: 42px;" id="tally-mask">2</div>
-                                <div>Not Wearing Mask Properly</div>
-                                </div>
-                                <div>
-                                <div style="font-size: 42px;" id="tally-distancing">4</div>
-                                <div>Not Social Distancing</div>
-                                </div>
-                            </div><!--idk pa kung paano nalagay code-->
+                <!-- summary -->
+                <div class="title mt-3">Overview of Today's Logs</div>
+                <div class="bubble" style="padding: 2px;">
+                    <div class="tally">
+                        <div>
+                            <div style="font-size: 42px;" id="tally-mask">0</div>
+                            <div>Not Wearing Mask Properly</div>
                         </div>
-                    </div>
-                    <div class="container-log">
-                        <div class="title mt-3">History Logs</div>
-                        <div class="bubble">
-                            <div class="logs" id="logs"></div>
+                        <div>
+                            <div style="font-size: 42px;" id="tally-distancing">0</div>
+                            <div>Not Social Distancing</div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="container-log">
+
+                <!-- event logs -->
+                <div class="title mt-3">History Logs</div>
+                <div class="bubble bubble-log">
+                    <button class="button-date" id="current-date">date</button>
+                    <div class="logs" id="logs"></div>
+                </div>
+            </div>
         </div>
+    </div>
+</div>
 
 <script>
+    var maskCount = 0;
+    var distCount = 0;
     var source = new EventSource("{{ url_for('logs') }}");
-    source.onmessage = function(event) {
-        document.getElementById("logs").innerHTML += event.data + "<br>";
-    }
-</script>
+    source.onmessage = function (event) {
+        var logMessage = event.data;
+        document.getElementById("logs").innerHTML += logMessage + "<br>";
 
+        if (logMessage.includes("Someone is not wearing a mask properly")) {
+            maskCount++; // Increment the mask violation count
+            document.getElementById("tally-mask").textContent = maskCount; // Update the tally
+        }
+
+        if (logMessage.includes("There are people not social distancing.")) {
+            distCount++; // Increment the dist violation count
+            document.getElementById("tally-distancing").textContent = distCount; // Update the tally
+        }
+    }
+
+    var currentDate = new Date();
+
+    // Month Day, Year
+    var formattedDate = currentDate.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+
+    // Put current date in the button
+    document.getElementById('current-date').textContent = formattedDate;
+</script>
 {% endblock %}
