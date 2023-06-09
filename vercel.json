@@ -8,11 +8,5 @@
             "src": "./face_detection_app.py",
             "use": "@vercel/python"
         }            
-    ],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "/"
-        }
     ]
 }
