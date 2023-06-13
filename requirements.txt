@@ -3,4 +3,3 @@ opencv-python
 scipy
 tensorflow
 numpy
-retina-face
