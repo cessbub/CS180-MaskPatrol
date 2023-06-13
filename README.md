@@ -23,7 +23,9 @@ CS180-MASKPATROL
 |             |__NM (added more images)
 |             |__CMFD (added more images)
 |             |__IMFD (added more images)
+|__face_detection_app.py
 |__mask-detection.ipnyb
+|__mask_detection.h5
 |__README.me
 ```
 
