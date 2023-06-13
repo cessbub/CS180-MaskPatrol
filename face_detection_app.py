@@ -8,6 +8,7 @@ import cv2
 from flask import Flask, render_template, Response, stream_with_context
 import time
 import queue
+from retinaface import RetinaFace
 
 MIN_DISTANCE = 500  # Minimum distance for social distancing violation
 
@@ -32,42 +33,31 @@ dist_label = {0: (0, 255, 0), 1: (255, 0, 0), 2:(255, 0, 0), 3: (255, 0, 0), 4: 
 model = load_model("mask_detection.h5")
 
 # define a function to generate video frames
-# define a function to generate video frames
 def gen_frames():
     while True:
+        
         # read the camera frame
         success, frame = camera.read()
         if not success:
             break
         else:
-            # convert the frame to blob
-            (h, w) = frame.shape[:2]
-            blob = cv2.dnn.blobFromImage(frame, 1.0, (300, 300), (104.0, 177.0, 123.0))
 
-            # pass the blob through the network to detect faces
-            faceNet.setInput(blob)
-            detections = faceNet.forward()
+            ###### FACE MASK DETECTION WITH RETINAFACE
+            detections = RetinaFace.detect_faces(frame)
+            # print(detections)
+            # print(faces['face_1']['facial_area'])
 
-            # initialize list of faces, corresponding locations, and list of distances
             faces = []
             locs = []
             centroids = []
             labels_mask = []
             labels_dist = []
 
-            # iterate over the detected faces
-            for i in range(detections.shape[2]):
-                confidence = detections[0, 0, i, 2]
-
-                # filter out weak detections
-                if confidence > 0.5:
-                    # compute the bounding box coordinates
-                    box = detections[0, 0, i, 3:7] * np.array([w, h, w, h])
-                    (startX, startY, endX, endY) = box.astype("int")
-
-                    # ensure the bounding boxes fall within the dimensions of the frame
-                    (startX, startY) = (max(0, startX), max(0, startY))
-                    (endX, endY) = (min(w - 1, endX), min(h - 1, endY))
+            for i, detection in enumerate(detections):
+                # print(detections[detection])
+                #  filter out weak detections
+                if detections[detection]['score'] > 0.5:
+                    startX, startY, endX, endY = detections[detection]['facial_area']
 
                     # extract the face ROI
                     face = frame[startY:endY, startX:endX]
@@ -82,8 +72,8 @@ def gen_frames():
                     locs.append((startX, startY, endX, endY))
                     centroids.append((startX + (endX - startX) / 2, startY + (endY - startY) / 2))
                     labels_dist.append(0)
-
-            # only make a predictions if at least one face was detected
+            
+            # # only make a predictions if at least one face was detected
             if len(faces) > 0:
                 faces = np.array(faces, dtype="float32")
                 preds = model.predict(faces, batch_size=32)
@@ -92,6 +82,62 @@ def gen_frames():
                     i = np.argmax(pred)
                     labels_mask.append(i)
 
+
+            ###### FACE MASK DETECTION WITH DNN
+            # # convert the frame to blob
+            # (h, w) = frame.shape[:2]
+            # blob = cv2.dnn.blobFromImage(frame, 1.0, (300, 300), (104.0, 177.0, 123.0))
+
+            # # pass the blob through the network to detect faces
+            # faceNet.setInput(blob)
+            # detections = faceNet.forward()
+
+            # # initialize list of faces, corresponding locations, and list of distances
+            # faces = []
+            # locs = []
+            # centroids = []
+            # labels_mask = []
+            # labels_dist = []
+
+            # # iterate over the detected faces
+            # for i in range(detections.shape[2]):
+            #     confidence = detections[0, 0, i, 2]
+
+            #     # filter out weak detections
+            #     if confidence > 0.5:
+            #         # compute the bounding box coordinates
+            #         box = detections[0, 0, i, 3:7] * np.array([w, h, w, h])
+            #         (startX, startY, endX, endY) = box.astype("int")
+
+            #         # ensure the bounding boxes fall within the dimensions of the frame
+            #         (startX, startY) = (max(0, startX), max(0, startY))
+            #         (endX, endY) = (min(w - 1, endX), min(h - 1, endY))
+
+            #         # extract the face ROI
+            #         face = frame[startY:endY, startX:endX]
+
+            #         # preprocess the face ROI
+            #         face = cv2.cvtColor(face, cv2.COLOR_BGR2RGB)
+            #         face = cv2.resize(face, (224, 224))
+            #         face = img_to_array(face)
+            #         face = preprocess_input(face)
+
+            #         faces.append(face)
+            #         locs.append((startX, startY, endX, endY))
+            #         centroids.append((startX + (endX - startX) / 2, startY + (endY - startY) / 2))
+            #         labels_dist.append(0)
+
+            # # only make a predictions if at least one face was detected
+            # if len(faces) > 0:
+            #     faces = np.array(faces, dtype="float32")
+            #     preds = model.predict(faces, batch_size=32)
+
+            #     for pred in preds:
+            #         i = np.argmax(pred)
+            #         labels_mask.append(i)
+
+
+            ###### SOCIAL DISTANCING DETECTOR
             # convert the centroids to a NumPy array
             centroids = np.array(centroids)
 
@@ -138,6 +184,9 @@ def gen_frames():
             if dist_violation:  # if there's a violation, add a log message
                 log_message = "There are people not social distancing."
                 log_queue.put(log_message)
+
+
+
             #else:
             #    log_message = "No violation detected"
             #    log_queue.put(log_message)
