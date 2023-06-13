@@ -11,22 +11,23 @@
 4. Run in terminal ```python face_detection_app.py```
 
 **Directory structure**
-# CS180-MASKPATROL    
-# |__.venv
-# |__datasets
-# |       |__FMD-SD
-# |       |     |__Face Mask Detection
-# |       |             |__ annotations
-# |       |             |__ images
-# |       |__MaskedFace-Net + RMFD + 12k masks + custom images
-# |             |__NM (added more images)
-# |             |__CMFD (added more images)
-# |             |__IMFD (added more images)
-# |__mask-detection.ipnyb
-# |__README.me
+```
+CS180-MASKPATROL    
+|__.venv
+|__datasets
+|       |__FMD-SD
+|       |     |__Face Mask Detection
+|       |             |__ annotations
+|       |             |__ images
+|       |__MaskedFace-Net + RMFD + 12k masks + custom images
+|             |__NM (added more images)
+|             |__CMFD (added more images)
+|             |__IMFD (added more images)
+|__mask-detection.ipnyb
+|__README.me
+```
 
 **Where to get the datasets?**
 1. [FMD-SD](https://www.kaggle.com/datasets/andrewmvd/face-mask-detection)
 2. [CMFD and IMFD](https://github.com/cabani/MaskedFace-Net)
-3. [NM](https://www.kaggle.com/datasets/ashishjangra27/face-mask-12k-images-dataset)
-_Note: Merged the WithoutMask folders into one NM folder_
+3. [NM](https://www.kaggle.com/datasets/ashishjangra27/face-mask-12k-images-dataset) (_Note: Merged the WithoutMask folders into one NM folder_)
