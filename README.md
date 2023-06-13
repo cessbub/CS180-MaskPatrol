@@ -1,6 +1,6 @@
 # CS180-MaskPatrol
 
-How to run this git:
+**How to run this repo:**
 
 1. Git clone the repository
 2. Create a virtual environment
