@@ -3,7 +3,9 @@
 How to run this git:
 
 1. Git clone the repository
-2. python3 -m venv cv
-3. cd cv
-4. source bin/activate
-5. conda install -c conda-forge opencv
+2. Create a virtual environment
+  a. Run in terminal ```python3 -m venv cv```
+  b. Run in terminal ```cd cv```
+  c. Run in terminal ```source bin/activate```
+3. Run in terminal ```conda install -c conda-forge opencv```
+4. Run in terminal ```python face_detection_app.py```
