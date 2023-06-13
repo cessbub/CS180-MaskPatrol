@@ -1,15 +1,12 @@
 {
     "version": 2,
+    "rewrites": [
+        { "source": "/(.*)", "destination": "face_detection_app" }
+    ],
     "builds": [
         {
             "src": "./face_detection_app.py",
             "use": "@vercel/python"
         }            
-    ],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "/"
-        }
     ]
 }
