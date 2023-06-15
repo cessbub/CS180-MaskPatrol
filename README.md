@@ -24,7 +24,12 @@ The project will use datasets of images of what it wants to detect in order to c
    - Run in terminal `python3 -m venv cv`
    - Run in terminal `cd cv`
    - Run in terminal `source bin/activate` 
-3. Run in terminal `conda install -c conda-forge opencv`
+3. Run in terminal
+   - `conda install -c conda-forge opencv`
+   - `pip install scipy`
+   - `pip install tensorflow`
+   - `pip install flask`
+   - `pip install opencv-python`
 4. Run in terminal `python face_detection_app.py`
 
 ## Directory structure 📁
